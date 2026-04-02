@@ -1,0 +1,517 @@
+/* ===== CSS VARIABLES & ROOT STYLING ===== */
+:root {
+    --primary-bg: #ffffff;
+    --primary-dark: #1a1a1a;
+    --accent-navy: #003d7a;
+    --accent-blue: #0066cc;
+    --accent-light: #f5f5f5;
+    --text-dark: #333333;
+    --text-light: #666666;
+    --border-color: #dddddd;
+    --card-shadow: rgba(0, 0, 0, 0.08);
+}
+
+/* ===== GLOBAL STYLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-bg);
+    color: var(--text-dark);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* ===== HEADER & PAGE LAYOUT ===== */
+.page-header {
+    text-align: center;
+    padding: 50px 20px 30px;
+    background: linear-gradient(135deg, #f9f9f9 0%, var(--accent-light) 100%);
+    border-bottom: 3px solid var(--accent-navy);
+}
+
+/* Header content wrapper for max-width constraint */
+.header-content {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 3em;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+    color: var(--accent-navy);
+    font-family: 'Georgia', 'Garamond', serif;
+}
+
+.subtitle {
+    font-size: 1.1em;
+    color: var(--text-light);
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+
+/* ===== BOROUGH NAVIGATION ===== */
+/* Navigation container with flex layout for responsive button wrapping */
+.borough-nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Individual navigation links styled as buttons */
+/* These allow users to jump to specific borough sections */
+.nav-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--accent-navy);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.95em;
+    /* Smooth transitions for hover effects */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+
+/* Hover effect: change color and lift button slightly */
+.nav-link:hover {
+    background-color: var(--accent-blue);
+    transform: translateY(-2px);
+}
+
+/* ===== MODAL FOR PROJECT DETAILS (CLICK-TO-REVEAL) ===== */
+/* Full-screen overlay container for the modal */
+/* Hidden by default, activated when .active class is added */
+.project-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Fade in animation when modal appears */
+    animation: fadeIn 0.3s ease;
+}
+
+/* Fade-in keyframe animation for smooth modal appearance */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* When .active class is applied, show the modal with flexbox centering */
+.project-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Modal content box styling */
+/* This is the white card that appears in the center of the screen */
+.modal-content {
+    background-color: var(--primary-bg);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    max-width: 700px;
+    width: 90%;
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+    /* Slide up animation for smooth entrance */
+    animation: slideUp 0.3s ease;
+}
+
+/* Slide-up keyframe animation for modal entrance */
+@keyframes slideUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Close button (X) in the top right corner of the modal */
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 32px;
+    color: var(--text-dark);
+    cursor: pointer;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    /* Smooth background color transition on hover */
+    transition: background-color 0.2s ease;
+}
+
+/* Hover effect for close button */
+.modal-close:hover {
+    background-color: var(--accent-light);
+}
+
+/* Modal body content wrapper */
+.modal-body {
+    margin-top: 20px;
+}
+
+/* Modal title - large heading for the project name */
+.modal-title {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--accent-navy);
+    margin-bottom: 25px;
+    padding-right: 40px;
+}
+
+/* Grid layout for modal details - 2 columns for better space usage */
+.modal-detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+/* Individual detail item in the modal grid */
+.modal-detail-item {
+    padding-bottom: 15px;
+}
+
+/* Label styling for detail items - uppercase for emphasis */
+.modal-detail-label {
+    font-size: 0.75em;
+    color: var(--accent-navy);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+}
+
+/* Value text for detail items */
+.modal-detail-value {
+    color: var(--text-dark);
+    font-size: 0.95em;
+    line-height: 1.5;
+}
+
+/* ===== BOROUGH SECTIONS ===== */
+.borough-section {
+    padding: 50px 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+    background-color: var(--primary-bg);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.borough-section:last-child {
+    border-bottom: none;
+}
+
+.borough-title {
+    font-size: 2em;
+    font-weight: 700;
+    color: var(--accent-navy);
+    margin-bottom: 30px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+}
+
+/* ===== GRID CONTAINER ===== */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+/* ===== FLIP CARD MECHANISM ===== */
+.flip-card {
+    height: 450px;
+    cursor: pointer;
+    position: relative;
+    /* Adding perspective makes the 3D flip effect work if you decide to use it later */
+    perspective: 1000px; 
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px var(--card-shadow);
+    transition: opacity 0.4s ease-in-out;
+    top: 0;
+    left: 0;
+}
+
+.flip-card-front {
+    background-color: #f5f5f5;
+    justify-content: flex-end;
+    position: relative;
+    opacity: 1;
+    z-index: 2;
+    pointer-events: auto;
+}
+
+.flip-card-back {
+    background-color: var(--primary-bg);
+    padding: 28px;
+    justify-content: flex-start;
+    overflow-y: auto;
+    border: 1px solid var(--border-color);
+    opacity: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.flip-card:hover .flip-card-front {
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.flip-card:hover .flip-card-back {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 2;
+}
+
+/* ===== NEW: TRANSIT BADGES ===== */
+.badge-container {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+
+.transit-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.transit-badge.circle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 1.2em;
+}
+
+.transit-badge.pill {
+    padding: 0 12px;
+    height: 36px;
+    border-radius: 18px;
+    font-size: 1.05em;
+    letter-spacing: 0.5px;
+}
+
+/* ===== FRONT CARD STYLING (Image Side) ===== */
+.project-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    /* Ensure the image doesn't overflow its container */
+    position: absolute; 
+    top: 0;
+    left: 0;
+}
+
+.project-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(26, 26, 26, 0.92), transparent);
+    padding: 28px;
+    min-height: 110px;
+    display: flex;
+    align-items: flex-end;
+    z-index: 5; /* Ensure overlay is above the image */
+}
+
+.project-title {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8); /* Added shadow for readability */
+}
+
+/* ===== BACK CARD STYLING (Details Side) ===== */
+.project-details {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    font-size: 0.95em;
+    line-height: 1.5;
+    width: 100%;
+}
+
+.detail-item {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 14px;
+}
+
+.detail-label {
+    font-size: 0.8em;
+    color: var(--accent-navy);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.9px;
+    margin-bottom: 6px;
+}
+
+.detail-value {
+    color: var(--text-dark);
+    font-size: 0.95em;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.cost-estimate {
+    background: #f0f4f8;
+    border-left: 4px solid var(--accent-navy);
+    padding: 12px 14px;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.cost-estimate .detail-label {
+    color: var(--accent-navy);
+}
+
+.cost-estimate .detail-value {
+    font-weight: 600;
+    font-size: 1.05em;
+}
+
+/* RESPONSIVE DESIGN */
+/* Adjustments for mobile and tablet screens */
+@media (max-width: 768px) {
+    /* Header adjustments */
+    .page-header {
+        padding: 40px 20px 25px;
+    }
+
+    h1 { 
+        font-size: 2em; 
+    }
+
+    /* Navigation spacing on mobile */
+    .borough-nav {
+        gap: 10px;
+    }
+
+    .nav-link {
+        padding: 8px 15px;
+        font-size: 0.85em;
+    }
+
+    /* Borough titles */
+    .borough-title { 
+        font-size: 1.5em; 
+        margin-bottom: 20px; 
+    }
+
+    /* Borough sections */
+    .borough-section { 
+        padding: 30px 20px; 
+    }
+
+    /* Project grid becomes single column on small screens */
+    .projects-grid { 
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+        gap: 20px; 
+    }
+
+    /* Flip cards shrink on mobile */
+    .flip-card { 
+        height: 400px; 
+    }
+
+    .project-overlay { 
+        padding: 20px; 
+        min-height: 80px; 
+    }
+
+    .project-title { 
+        font-size: 1.3em; 
+    }
+
+    .project-details { 
+        font-size: 0.9em; 
+        gap: 12px; 
+    }
+
+    /* Modal adjustments for mobile */
+    .modal-content {
+        width: 95%;
+        padding: 30px;
+        max-height: 90vh;
+    }
+
+    /* Modal grid becomes single column on mobile */
+    .modal-detail-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .modal-title {
+        font-size: 1.4em;
+        padding-right: 30px;
+    }
+}
+
+/* Custom scrollbar styling */
+.flip-card-back::-webkit-scrollbar { width: 6px; }
+.flip-card-back::-webkit-scrollbar-track { background: #f5f5f5; }
+.flip-card-back::-webkit-scrollbar-thumb { background: var(--accent-navy); border-radius: 3px; }
+.flip-card-back::-webkit-scrollbar-thumb:hover { background: var(--accent-blue); }
+/* Styling for express diamond lines (like the 6 express) */
+.transit-badge.diamond {
+    width: 36px;
+    height: 36px;
+    /* This cuts the square into a perfect diamond shape */
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); 
+    font-size: 1.1em;
+}

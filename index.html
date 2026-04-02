@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>A Better Billion - NYC Transportation Projects</title>
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <body>
+    <!-- PAGE HEADER WITH BOROUGH NAVIGATION -->
+    <!-- This header contains the title and quick-jump links to each borough section -->
+    <!-- The nav links allow users to jump to different parts of the page smoothly -->
+    <div class="page-header">
+        <div class="header-content">
+            <h1>A Better Billion</h1>
+            <p class="subtitle">
+                <a href="https://transitcosts.com/a-better-billion.html" target="_blank" rel="noopener">NYU Marron Institute</a> • Click cards to explore details
+            </p>
+            
+            <!-- BOROUGH NAVIGATION LINKS -->
+            <!-- These links smooth-scroll to each borough section using anchor links -->
+            <!-- Users can quickly navigate to the borough they're interested in -->
+            <nav class="borough-nav">
+                <a href="#manhattan-section" class="nav-link">Manhattan</a>
+                <a href="#brooklyn-section" class="nav-link">Brooklyn</a>
+                <a href="#queens-section" class="nav-link">Queens</a>
+                <a href="#bronx-section" class="nav-link">The Bronx</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- MODAL FOR PROJECT DETAILS (CLICK-TO-REVEAL) -->
+    <!-- This modal pops up when a user clicks a project card -->
+    <!-- It displays all project details in a clean, organized layout -->
+    <!-- Users can close it by clicking X, pressing Escape, or clicking outside the modal -->
+    <div class="project-modal" id="projectModal">
+        <div class="modal-content">
+            <!-- Close button (X) in the top right corner -->
+            <button class="modal-close" id="closeModal">&times;</button>
+            <!-- Modal body will be populated by JavaScript with project details -->
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- MANHATTAN SECTION -->
+    <!-- Each borough has its own section with a title and project grid -->
+    <!-- Projects are automatically organized by borough in the JavaScript -->
+    <div class="borough-section" id="manhattan-section">
+        <h2 class="borough-title">Manhattan</h2>
+        <!-- The grid will be populated with flip cards by JavaScript -->
+        <div class="projects-grid" id="manhattan-grid"></div>
+    </div>
+
+    <!-- BROOKLYN SECTION -->
+    <div class="borough-section" id="brooklyn-section">
+        <h2 class="borough-title">Brooklyn</h2>
+        <div class="projects-grid" id="brooklyn-grid"></div>
+    </div>
+
+    <!-- QUEENS SECTION -->
+    <div class="borough-section" id="queens-section">
+        <h2 class="borough-title">Queens</h2>
+        <div class="projects-grid" id="queens-grid"></div>
+    </div>
+
+    <!-- THE BRONX SECTION -->
+    <div class="borough-section" id="bronx-section">
+        <h2 class="borough-title">The Bronx</h2>
+        <!-- Note: The grid ID uses 'bronx' instead of 'the-bronx' for cleaner JavaScript -->
+        <div class="projects-grid" id="the-bronx-grid"></div>
+    </div>
+
+    <!-- JAVASCRIPT FILE -->
+    <!-- This script handles all dynamic functionality:
+         - Creating project cards from the data array
+         - Organizing projects by borough
+         - Handling click events to show the modal
+         - Rendering modal content with all project details
+         - Managing modal open/close interactions
+    -->
+    <script src="index.js"></script>
+
+  </body>
+</html>
